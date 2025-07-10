@@ -7,10 +7,10 @@ info:
     API to control a dispense unit.
 #servers:
 #- url: http://placeholder
-#basePath: ''
-#tags:
-#securityDefinitions: {}
-#paths:
+basePath: ''
+tags:
+securityDefinitions: {}
+paths:
   "/":
     get:
       description: ''
