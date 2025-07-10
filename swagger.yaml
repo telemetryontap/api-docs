@@ -9,8 +9,8 @@ servers:
 - url: http://placeholder
 basePath: ''
 tags:
-- name: ''
-  description: ''
+- name: "product"
+  description: "Everything about your Products"
 securityDefinitions: {}
 paths:
   "/":
