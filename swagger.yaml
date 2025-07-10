@@ -7,11 +7,9 @@ info:
     API to control a dispense unit.
 #servers:
 #- url: http://placeholder
-basePath: ''
+#basePath: ''
 tags:
-- name: "product"
-  description: "Everything about your Products"
-securityDefinitions: {}
+#securityDefinitions: {}
 paths:
   "/":
     get:
