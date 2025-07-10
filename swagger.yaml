@@ -1,0 +1,632 @@
+---
+openapi: 3.0.0
+info:
+  version: '2.0'
+  title: Dispense API
+  description: Dispense API Created by Telemetry On Tap for Micro Matic. A simple
+    API to control a dispense unit.
+servers:
+- url: http://placeholder
+basePath: ''
+tags:
+- name: ''
+  description: ''
+securityDefinitions: {}
+paths:
+  "/":
+    get:
+      description: ''
+      responses:
+        '200':
+          description: Operation Result
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+        '500':
+          description: Operation Error Result. General Error.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+  "/product_sources":
+    get:
+      description: ''
+      responses:
+        '200':
+          description: Operation Result
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_product_sources"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_product_sources"
+        '500':
+          description: Operation Error Result. General Error.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+  "/product_source":
+    get:
+      description: ''
+      parameters:
+      - name: source_id
+        in: query
+        description: Product source id to retrieve
+        required: true
+        schema: {}
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_product_source"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_product_source"
+        '404':
+          description: Operation Error Result. Product source not found.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+        '500':
+          description: Operation Error Result. General Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+          schema:
+            "$ref": "#/components/schemas/api_response"
+    post:
+      description: ''
+      responses:
+        '200':
+          description: Operation Result
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_product_sources"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_product_sources"
+        '500':
+          description: Operation Error Result. General Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+          schema:
+            "$ref": "#/components/schemas/api_response"
+      requestBody:
+        required: true
+        description: Trigger dispense for one or more product sources.
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/source_update_request"
+  "/dispense":
+    post:
+      description: ''
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+        '500':
+          description: Operation Error Result. General Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+          schema:
+            "$ref": "#/components/schemas/api_response"
+      requestBody:
+        required: true
+        description: Trigger dispense for one or more product sources.
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/dispense_request"
+    get:
+      description: ''
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/product_source_dispense_status"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/product_source_dispense_status"
+        '500':
+          description: Operation Error Result. General Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+  "/dispense_continuous":
+    post:
+      description: ''
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+        '500':
+          description: Operation Error Result. General Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+          schema:
+            "$ref": "#/components/schemas/api_response"
+      requestBody:
+        required: true
+        description: Payload representing a dispense request.
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/dispense_continuous_request"
+  "/reboot_system":
+    get:
+      description: ''
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_product_source"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_product_source"
+  "/stop_source_dispense":
+    post:
+      description: ''
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+        '500':
+          description: Operation Error Result. General Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+          schema:
+            "$ref": "#/components/schemas/api_response"
+      requestBody:
+        required: true
+        description: Trigger dispense for one or more product sources.
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/stop_source_dispense_request"
+  "/pull_line_tap":
+    post:
+      description: ''
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+        '500':
+          description: Operation Error Result. General Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+          schema:
+            "$ref": "#/components/schemas/api_response"
+      requestBody:
+        required: true
+        description: Simulate handle pull for line.
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/pull_line_tap_request"
+  "/release_line_tap":
+    post:
+      description: ''
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/dispense_start_result"
+        '500':
+          description: Operation Error Result. General Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_response"
+          schema:
+            "$ref": "#/components/schemas/api_response"
+      requestBody:
+        required: true
+        description: Simulate handle release for line.
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/pull_line_tap_request"
+  "/abort_dispense":
+    get:
+      description: ''
+      responses:
+        '200':
+          description: Success Result.
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/api_product_source"
+            application/xml:
+              schema:
+                "$ref": "#/components/schemas/api_product_source"
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    dispense_start_result:
+      type: object
+      properties:
+        duration_ms:
+          type: number
+          example: 0
+        line_id:
+          type: number
+          example: 0
+        accepted:
+          type: boolean
+          example: true
+        result:
+          type: number
+          example: 1
+      xml:
+        name: dispense_start_result
+    api_response:
+      type: object
+      properties:
+        code:
+          type: number
+          example: 1
+        message:
+          type: string
+          example: operation accepted
+        result: {}
+      xml:
+        name: api_response
+    api_response_code:
+      type: object
+      properties:
+        '0':
+          type: string
+          example: unknown
+        '1':
+          type: string
+          example: success
+        '11':
+          type: string
+          example: error
+        '21':
+          type: string
+          example: ingredient_not_found
+        '22':
+          type: string
+          example: ingredient_empty
+        '23':
+          type: string
+          example: ingredient_expired
+        '24':
+          type: string
+          example: ingredient_low
+        '40':
+          type: string
+          example: device_fault
+        '41':
+          type: string
+          example: device_not_ready
+        '42':
+          type: string
+          example: device_in_maintenance_mode
+        '43':
+          type: string
+          example: device_requires_service
+        '44':
+          type: string
+          example: device_in_service_mode
+        '45':
+          type: string
+          example: device_busy
+        '46':
+          type: string
+          example: device_ready
+        unknown:
+          type: number
+          example: 0
+        success:
+          type: number
+          example: 1
+        error:
+          type: number
+          example: 11
+        ingredient_not_found:
+          type: number
+          example: 21
+        ingredient_empty:
+          type: number
+          example: 22
+        ingredient_expired:
+          type: number
+          example: 23
+        ingredient_low:
+          type: number
+          example: 24
+        device_fault:
+          type: number
+          example: 40
+        device_not_ready:
+          type: number
+          example: 41
+        device_in_maintenance_mode:
+          type: number
+          example: 42
+        device_requires_service:
+          type: number
+          example: 43
+        device_in_service_mode:
+          type: number
+          example: 44
+        device_busy:
+          type: number
+          example: 45
+        device_ready:
+          type: number
+          example: 46
+      xml:
+        name: api_response_code
+    api_product_source:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 0
+        name:
+          type: string
+          example: Mocha
+        last_calibration_date:
+          type: number
+          example: 0
+        starting_count_oz:
+          type: number
+          example: 0
+        product_shelf_life_days:
+          type: number
+          example: 0
+        track_inventory_data:
+          type: boolean
+          example: false
+        low_bib_warning_threshold_oz:
+          type: number
+          example: 0
+        calibration_data:
+          type: array
+          example: []
+          items: {}
+      xml:
+        name: api_product_source
+    api_product_sources:
+      type: array
+      items:
+        xml:
+          name: api_product_source
+        "$ref": "#/components/schemas/api_product_source"
+      xml:
+        name: api_product_sources
+    product_source_dispense_status:
+      type: array
+      items:
+        type: object
+        properties:
+          active_source_status:
+            type: array
+            items:
+              type: object
+              properties:
+                source_id:
+                  type: number
+                  example: 6
+                duration_ms:
+                  type: number
+                  example: 3000
+                flow_percent_actual:
+                  type: number
+                  example: 60
+                flow_percent_requested:
+                  type: number
+                  example: 50
+                quantity_oz_requested:
+                  type: number
+                  example: 3
+                start_time:
+                  type: number
+                  example: 1752030676676
+          dispensing:
+            type: boolean
+            example: true
+          line_id:
+            type: number
+            example: 2
+          start_time:
+            type: number
+            example: 1752030676676
+      xml:
+        name: product_source_dispense_status
+    dispense_source:
+      type: object
+      properties:
+        description:
+          type: string
+          example: Test dispense source
+        product_source_id:
+          type: number
+          example: 1
+        flow_percent:
+          type: number
+          example: 100
+        quantity_oz:
+          type: number
+          example: 1
+        allow_mod_displacment:
+          type: boolean
+          example: false
+        span_whole_dispense:
+          type: boolean
+          example: false
+        tag:
+          type: string
+          example: test
+        hidden:
+          type: boolean
+          example: false
+      xml:
+        name: dispense_source
+    dispense_request:
+      type: array
+      items:
+        xml:
+          name: dispense_source
+        "$ref": "#/components/schemas/dispense_source"
+      xml:
+        name: dispense_request
+    dispense_source_continuous:
+      type: object
+      properties:
+        product_source_id:
+          type: number
+          example: 1
+        flow_percent:
+          type: number
+          example: 100
+      xml:
+        name: dispense_source_continuous
+    dispense_continuous_request:
+      type: array
+      items:
+        xml:
+          name: dispense_source_continuous
+        "$ref": "#/components/schemas/dispense_source_continuous"
+      xml:
+        name: dispense_continuous_request
+    stop_source_dispense_request:
+      type: array
+      example:
+      - 1
+      - 3
+      items:
+        type: number
+      xml:
+        name: stop_source_dispense_request
+    source_update_request:
+      type: array
+      items:
+        type: object
+        properties:
+          product_name:
+            type: string
+            example: Product 1
+          product_source_id:
+            type: number
+            example: 1
+          calibration_data:
+            type: array
+            example:
+            - 0.23
+            - 0.75
+            - 1.1
+            - 2.2
+            items:
+              type: number
+      xml:
+        name: source_update_request
+    pull_line_tap_request:
+      type: array
+      example:
+      - 0
+      items:
+        type: number
+      xml:
+        name: pull_line_tap_request
+    release_line_tap_request:
+      type: array
+      example:
+      - 0
+      items:
+        type: number
+      xml:
+        name: release_line_tap_request
