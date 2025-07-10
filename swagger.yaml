@@ -5,7 +5,15 @@ info:
   title: Dispense API
   description: Dispense API Created by Telemetry On Tap for Micro Matic. A simple
     API to control a dispense unit.
-  "/":
+servers:
+- url: http
+basePath: ''
+tags:
+- name: ''
+  description: ''
+securityDefinitions: {}
+paths:
+"/":
     get:
       description: ''
       responses:
