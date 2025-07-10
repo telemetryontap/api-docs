@@ -8,7 +8,7 @@ info:
 #servers:
 #- url: http://placeholder
 #basePath: ''
-tags:
+#tags:
 #securityDefinitions: {}
 paths:
   "/":
