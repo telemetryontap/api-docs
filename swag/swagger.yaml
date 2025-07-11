@@ -3,8 +3,7 @@ openapi: 3.0.0
 info:
   version: '2.0'
   title: Dispense API
-  description: Dispense API Created by Telemetry On Tap for Micro Matic. <br> <br> A simple
-    API to control a dispense unit.
+  description: Dispense API Created by Telemetry On Tap for Micro Matic. <br> <br> API to control beverage dispense machines.
 #servers:
 #- url: http://placeholder
 basePath: ''
