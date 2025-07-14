@@ -1,6 +1,6 @@
 # Using the API 
 
-### Swagger API Spec: [Swagger UI](https://docs.telemetryontap.com/swag/)
+### Swagger API Spec: [Swagger UI](swag/)
 
 ## API Specification
 The Telemetry on Tap API follows REST API standards and makes OpenAPI swagger available on the ethernet interface of machines. 
